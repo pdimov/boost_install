@@ -28,6 +28,12 @@ else()
 
 endif()
 
+get_target_property(type Boost::random TYPE)
+get_target_property(imploc_d Boost::random IMPORTED_LOCATION_DEBUG)
+get_target_property(imploc_r Boost::random IMPORTED_LOCATION_RELEASE)
+
+message(STATUS "Boost::random: ${type} IMPORTED debug '${imploc_d}' release '${imploc_r}'")
+
 add_library(lib lib.cpp)
 target_link_libraries(lib PRIVATE Boost::random)
 
